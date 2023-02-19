@@ -1,9 +1,10 @@
-var garden,rabbit,apple,orangeL,redL;
-var gardenImg,rabbitImg,carrotImg,orangeImg,redImg;
+var garden, rabbit, apple, orangeL, redL;
+var gardenImg, rabbitImg, carrotImg, orangeImg, redImg, gardenImg2;
 
 
-function preload(){
+function preload() {
   gardenImg = loadImage("garden.png");
+  gardenImg2 = loadImage("fundo2.png");
   rabbitImg = loadImage("rabbit.png");
   appleImg = loadImage("apple.png");
   orangeImg = loadImage("orangeLeaf.png");
@@ -11,71 +12,71 @@ function preload(){
 }
 
 
-function setup(){
-  
-  createCanvas(400,400);
-// Moving background
-garden=createSprite(200,200);
-garden.addImage(gardenImg);
+function setup() {
+
+  createCanvas(700, 600);
+  // Moving background
+  garden = createSprite(200, 200);
+  garden.addImage(gardenImg2);
 
 
-//creating boy running
-rabbit = createSprite(160,340,20,20);
-rabbit.scale =0.09;
-rabbit.addImage(rabbitImg);
+  //creating boy running
+  rabbit = createSprite(160, 540, 20, 20);
+  rabbit.scale = 0.09;
+  rabbit.addImage(rabbitImg);
 }
 
 function draw() {
   background(0);
-  
+
   // boy moving on Xaxis with mouse'
   rabbit.x = World.mouseX;
-  
-  edges= createEdgeSprites();
+
+  edges = createEdgeSprites();
   rabbit.collide(edges);
-  
-   drawSprites();
-   
-  
+
+  drawSprites();
 
 
 
-var select_sprites = Math.round(random(1,3));
 
-  
+
+  var select_sprites = Math.round(random(1, 3));
+
+
   if (frameCount % 80 == 0) {
-     if (select_sprites == 1) {
+    if (select_sprites == 1) {
       createApples();
     } else if (select_sprites == 2) {
       createOrange();
-    }else {
+    } else {
       createRed();
-     }
-   }
+    }
+  }
 
 }
 
 function createApples() {
-apple = createSprite(random(50, 350),40, 10, 10);
-apple.addImage(appleImg);
-apple.scale=0.07;
-apple.velocityY = 3;
-apple.lifetime = 70;
-  
+  apple = createSprite(random(50, 350), 40, 10, 10);
+  apple.addImage(appleImg);
+  apple.scale = 0.07;
+  apple.velocityY = 3;
+  apple.lifetime = 140;
+
 }
 
 function createOrange() {
-orangeL = createSprite(random(50, 350),40, 10, 10);
-orangeL.addImage(orangeImg);
-orangeL.scale=0.08;
-orangeL.velocityY = 3;
-orangeL.lifetime = 70;
+  orangeL = createSprite(random(50, 350), 40, 10, 10);
+  orangeL.addImage(orangeImg);
+  orangeL.scale = 0.08;
+  orangeL.velocityY = 3;
+  orangeL.lifetime = 140;
 }
 
 function createRed() {
-redL = createSprite(random(50, 350),40, 10, 10);
-redL.addImage(redImg);
-redL.scale=0.06;
+  redL = createSprite(random(50, 350), 40, 10, 10);
+  redL.addImage(redImg);
+  redL.scale = 0.06;
   redL.velocityY = 3;
-  redL.lifetime = 70;
+  redL.lifetime = 140;
 }
